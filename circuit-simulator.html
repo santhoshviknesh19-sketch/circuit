@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Circuit Simulator - Learn Electronics & Circuit Design</title>
+    <link rel="stylesheet" href="circuit.css">
+    <style>
+        .simulator-container {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+
+        .simulator-toolbar {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+            margin-bottom: 1rem;
+        }
+
+        .simulator-toolbar button {
+            padding: 0.75rem 1rem;
+            border: 1px solid rgba(0, 0, 0, 0.25);
+            border-radius: 8px;
+            background: rgba(255, 255, 255, 0.9);
+            color: #000;
+            cursor: pointer;
+            font-weight: 600;
+            transition: background 0.2s, transform 0.2s;
+        }
+
+        .simulator-toolbar button.active {
+            background: rgba(255, 255, 255, 0.35);
+            transform: translateY(-1px);
+        }
+
+        .simulator-toolbar button:hover {
+            background: rgba(255, 255, 255, 0.25);
+        }
+
+        .simulator-area {
+            position: relative;
+            border: 2px dashed rgba(255, 255, 255, 0.7);
+            border-radius: 12px;
+            height: 600px;
+            overflow: hidden;
+            background: rgba(0, 0, 0, 0.35);
+        }
+
+        #simCanvas {
+            width: 100%;
+            height: 100%;
+            display: block;
+        }
+
+        body {
+            color: #000;
+        }
+
+        .instructions {
+            margin-top: 1rem;
+            font-size: 0.95rem;
+            color: #000;
+        }
+
+        .status {
+            margin-top: 1rem;
+            font-size: 0.9rem;
+            color: #000;
+        }
+
+        /* Keep the hero text readable on the gradient background */
+        .hero {
+            color: white;
+        }
+
+        .hero .btn {
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">⚡ Circuit</div>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="courses.html">Courses</a></li>
+                <li><a href="circuit-simulator.html">Circuit Simulator</a></li>
+                <li><a href="#tutorials">Tutorials</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <h1>Circuit Simulator</h1>
+        <p>Build circuits in the canvas below. Drag components, connect them with wires, and experiment freely.</p>
+        <a href="#sim" class="btn">Start Building</a>
+    </section>
+
+    <div class="simulator-container" id="sim">
+        <div class="simulator-toolbar">
+            <button data-tool="select" class="active">Select</button>
+            <button data-tool="resistor">Resistor</button>
+            <button data-tool="battery">Battery</button>
+            <button data-tool="wire">Wire</button>
+            <button data-tool="delete">Delete</button>
+            <button id="clearBtn" type="button">Clear</button>
+            <button id="checkBtn" type="button">Simulate Circuit</button>
+        </div>
+
+        <div class="simulator-area">
+            <canvas id="simCanvas"></canvas>
+        </div>
+
+        <p class="instructions">
+            1) Pick a tool (Resistor or Battery) and click the canvas to place it.
+            <br>2) Switch to Wire mode, then click two components to connect them.
+            <br>3) Click “Simulate Circuit” to see a quick result (series circuits only).
+        </p>
+        <p class="status" id="status">Tool: Select</p>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 Circuit. All rights reserved.</p>
+    </footer>
+
+    <script src="simulator.js" defer></script>
+</body>
+</html>
