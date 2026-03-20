@@ -225,7 +225,7 @@ footer {
     color: #555;
 }
 
-.solution-btn, .submit-btn {
+.solution-btn, .submit-btn, .check-btn {
     background: linear-gradient(135deg, #667eea 0%, #ff6b6b 100%);
     color: white;
     border: none;
@@ -238,9 +238,14 @@ footer {
     transition: all 0.3s ease;
 }
 
-.solution-btn:hover, .submit-btn:hover {
+.solution-btn:hover, .submit-btn:hover, .check-btn:hover {
     transform: translateY(-2px);
     box-shadow: 0 4px 15px rgba(255, 107, 107, 0.4);
+}
+
+.check-btn:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 8px rgba(255, 107, 107, 0.3);
 }
 
 .quiz-options {

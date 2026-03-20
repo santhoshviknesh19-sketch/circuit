@@ -39,21 +39,21 @@
                     <label><input type="radio" name="q1" value="24"> 24Ω</label>
                     <label><input type="radio" name="q1" value="1"> 1Ω</label>
                 </div>
-                <button class="submit-btn">Submit Answer</button>
+                <button class="check-btn">Check</button>
                 <div class="feedback" style="display: none;"></div>
-                <div class="solution" style="display: none;">
-                    <p><strong>Solution:</strong> For resistors in series: Req = R1 + R2 = 4Ω + 6Ω = 10Ω</p>
-                </div>
-                <button class="solution-btn">Show Solution</button>
             </div>
 
             <div class="problem">
                 <h3>Problem 2</h3>
                 <p>Find the equivalent resistance of two resistors in parallel, with resistances of 4Ω and 6Ω.</p>
-                <div class="solution" style="display: none;">
-                    <p><strong>Solution:</strong> For resistors in parallel: Req = (R1 × R2) / (R1 + R2) = (4Ω × 6Ω) / (4Ω + 6Ω) = 24Ω / 10Ω = 2.4Ω</p>
+                <div class="quiz-options">
+                    <label><input type="radio" name="q2" value="2.4"> 2.4Ω</label>
+                    <label><input type="radio" name="q2" value="10"> 10Ω</label>
+                    <label><input type="radio" name="q2" value="24"> 24Ω</label>
+                    <label><input type="radio" name="q2" value="1"> 1Ω</label>
                 </div>
-                <button class="solution-btn">Show Solution</button>
+                <button class="check-btn">Check</button>
+                <div class="feedback" style="display: none;"></div>
             </div>
 
             <div class="problem">
@@ -65,12 +65,8 @@
                     <label><input type="radio" name="q3" value="add"> Just add all resistances</label>
                     <label><input type="radio" name="q3" value="multiply"> Multiply all resistances</label>
                 </div>
-                <button class="submit-btn">Submit Answer</button>
+                <button class="check-btn">Check</button>
                 <div class="feedback" style="display: none;"></div>
-                <div class="solution" style="display: none;">
-                    <p><strong>Solution:</strong> First, find the equivalent resistance of the parallel resistors, then add it to the series resistor.</p>
-                </div>
-                <button class="solution-btn">Show Solution</button>
             </div>
         </div>
     </div>
@@ -82,24 +78,32 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            const showSolutionButtons = document.querySelectorAll('.solution-btn');
+            // Shuffle function
+            function shuffleArray(array) {
+                for (let i = array.length - 1; i > 0; i--) {
+                    const j = Math.floor(Math.random() * (i + 1));
+                    [array[i], array[j]] = [array[j], array[i]];
+                }
+                return array;
+            }
 
-            showSolutionButtons.forEach(button => {
-                button.addEventListener('click', function() {
-                    const solution = this.previousElementSibling;
-                    if (solution.style.display === 'none') {
-                        solution.style.display = 'block';
-                        this.textContent = 'Hide Solution';
-                    } else {
-                        solution.style.display = 'none';
-                        this.textContent = 'Show Solution';
-                    }
+            // Shuffle quiz options
+            const quizOptionsContainers = document.querySelectorAll('.quiz-options');
+            quizOptionsContainers.forEach(container => {
+                const labels = Array.from(container.querySelectorAll('label'));
+                const shuffledLabels = shuffleArray(labels);
+                
+                // Clear container and re-add labels in shuffled order
+                container.innerHTML = '';
+                shuffledLabels.forEach(label => {
+                    container.appendChild(label);
                 });
             });
 
-            const submitButtons = document.querySelectorAll('.submit-btn');
+            // Check button functionality
+            const checkButtons = document.querySelectorAll('.check-btn');
 
-            submitButtons.forEach(button => {
+            checkButtons.forEach(button => {
                 button.addEventListener('click', function() {
                     const problem = this.closest('.problem');
                     const selectedOption = problem.querySelector('input[type="radio"]:checked');
@@ -107,7 +111,7 @@
 
                     if (!selectedOption) {
                         feedback.textContent = 'Please select an answer.';
-                        feedback.style.color = 'red';
+                        feedback.style.color = '#ff6b6b';
                         feedback.style.display = 'block';
                         return;
                     }
@@ -124,11 +128,11 @@
                     }
 
                     if (selectedOption.value === correctAnswer) {
-                        feedback.textContent = 'Correct!';
-                        feedback.style.color = 'green';
+                        feedback.textContent = '✓ Correct!';
+                        feedback.style.color = '#28a745';
                     } else {
-                        feedback.textContent = 'Incorrect. Try again or check the solution.';
-                        feedback.style.color = 'red';
+                        feedback.textContent = '✗ Incorrect. Try again.';
+                        feedback.style.color = '#ff6b6b';
                     }
 
                     feedback.style.display = 'block';
