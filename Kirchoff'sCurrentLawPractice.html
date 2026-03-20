@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kirchoff's Current Law Practice Problems - Learn Electronics & Circuit Design</title>
+    <link rel="stylesheet" href="OhmsLawCourse.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">⚡ Circuit</div>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="courses.html">Courses</a></li>
+                <li><a href="circuit-simulator.html">Circuit Simulator</a></li>
+                <li><a href="tutorials.html">Tutorials</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <h1>Kirchoff's Current Law Practice Problems</h1>
+        <p>Test your understanding with these interactive practice problems.</p>
+    </section>
+
+    <div class="container">
+        <div class="practice-problems">
+            <h2>Practice Problems</h2>
+
+            <div class="problem">
+                <h3>Problem 1</h3>
+                <p>At a node, 3A and 5A are entering. How much current must leave the node to satisfy KCL?</p>
+                <div class="quiz-options">
+                    <label><input type="radio" name="q1" value="8"> 8A</label>
+                    <label><input type="radio" name="q1" value="2"> 2A</label>
+                    <label><input type="radio" name="q1" value="15"> 15A</label>
+                    <label><input type="radio" name="q1" value="0"> 0A</label>
+                </div>
+                <button class="check-btn">Check</button>
+                <div class="feedback" style="display: none;"></div>
+            </div>
+
+            <div class="problem">
+                <h3>Problem 2</h3>
+                <p>In a node, 6A leaves, 2A leaves, and 4A enters. What is the net current sum at the node (by KCL convention: entering positive, leaving negative)?</p>
+                <div class="quiz-options">
+                    <label><input type="radio" name="q2" value="-4"> -4A</label>
+                    <label><input type="radio" name="q2" value="4"> 4A</label>
+                    <label><input type="radio" name="q2" value="0"> 0A</label>
+                    <label><input type="radio" name="q2" value="8"> 8A</label>
+                </div>
+                <button class="check-btn">Check</button>
+                <div class="feedback" style="display: none;"></div>
+            </div>
+
+            <div class="problem">
+                <h3>Problem 3</h3>
+                <p>At a node, three branch currents are: I1=2A into node, I2=3A out of node, I3=?</p>
+                <p>What must I3 be for KCL to hold?</p>
+                <div class="quiz-options">
+                    <label><input type="radio" name="q3" value="1"> 1A into node</label>
+                    <label><input type="radio" name="q3" value="-1"> 1A out of node</label>
+                    <label><input type="radio" name="q3" value="5"> 5A into node</label>
+                    <label><input type="radio" name="q3" value="0"> 0A</label>
+                </div>
+                <button class="check-btn">Check</button>
+                <div class="feedback" style="display: none;"></div>
+            </div>
+
+            <div class="problem">
+                <h3>Problem 4</h3>
+                <p>A node has three currents: 4A entering, 1A leaving, and X leaving. Find X so that KCL is satisfied.</p>
+                <div class="quiz-options">
+                    <label><input type="radio" name="q4" value="3"> 3A</label>
+                    <label><input type="radio" name="q4" value="5"> 5A</label>
+                    <label><input type="radio" name="q4" value="2"> 2A</label>
+                    <label><input type="radio" name="q4" value="-2"> -2A</label>
+                </div>
+                <button class="check-btn">Check</button>
+                <div class="feedback" style="display: none;"></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="next-section">
+        <a href="Kirchoff'sCurrentLawContent.html" class="btn back-btn">Back to Course Content</a>
+        <a href="circuit-simulator.html" class="btn next-btn">Next: Circuit Simulator</a>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            function shuffleArray(array) {
+                for (let i = array.length - 1; i > 0; i--) {
+                    const j = Math.floor(Math.random() * (i + 1));
+                    [array[i], array[j]] = [array[j], array[i]];
+                }
+                return array;
+            }
+
+            const quizOptionsContainers = document.querySelectorAll('.quiz-options');
+            quizOptionsContainers.forEach(container => {
+                const labels = Array.from(container.querySelectorAll('label'));
+                const shuffledLabels = shuffleArray(labels);
+                container.innerHTML = '';
+                shuffledLabels.forEach(label => {
+                    container.appendChild(label);
+                });
+            });
+
+            const checkButtons = document.querySelectorAll('.check-btn');
+
+            checkButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const problem = this.closest('.problem');
+                    const selectedOption = problem.querySelector('input[type="radio"]:checked');
+                    const feedback = problem.querySelector('.feedback');
+
+                    if (!selectedOption) {
+                        feedback.textContent = 'Please select an answer.';
+                        feedback.style.color = '#ff6b6b';
+                        feedback.style.display = 'block';
+                        return;
+                    }
+
+                    const questionName = selectedOption.name;
+                    let correctAnswer = '';
+
+                    if (questionName === 'q1') {
+                        correctAnswer = '8';
+                    } else if (questionName === 'q2') {
+                        correctAnswer = '-4';
+                    } else if (questionName === 'q3') {
+                        correctAnswer = '-1';
+                    } else if (questionName === 'q4') {
+                        correctAnswer = '3';
+                    }
+
+                    if (selectedOption.value === correctAnswer) {
+                        feedback.textContent = '✓ Correct!';
+                        feedback.style.color = '#28a745';
+                    } else {
+                        feedback.textContent = '✗ Incorrect. Try again.';
+                        feedback.style.color = '#ff6b6b';
+                    }
+
+                    feedback.style.display = 'block';
+                });
+            });
+        });
+    </script>
+</body>
+</html></content>
+<parameter name="filePath">/workspaces/Random/CapacitancePractice.html

@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kirchoff's Voltage Law Practice Problems - Learn Electronics & Circuit Design</title>
+    <link rel="stylesheet" href="OhmsLawCourse.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">⚡ Circuit</div>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="courses.html">Courses</a></li>
+                <li><a href="circuit-simulator.html">Circuit Simulator</a></li>
+                <li><a href="tutorials.html">Tutorials</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <h1>Kirchoff's Voltage Law Practice Problems</h1>
+        <p>Test your understanding with these interactive practice problems.</p>
+    </section>
+
+    <div class="container">
+        <div class="practice-problems">
+            <h2>Practice Problems</h2>
+
+            <div class="problem">
+                <h3>Problem 1</h3>
+                <p>In a single loop, voltage rises by 10V and drops of 3V and 7V exist. According to KVL, what is the sum of voltages?</p>
+                <div class="quiz-options">
+                    <label><input type="radio" name="q1" value="0"> 0V</label>
+                    <label><input type="radio" name="q1" value="10"> 10V</label>
+                    <label><input type="radio" name="q1" value="-10"> -10V</label>
+                    <label><input type="radio" name="q1" value="1"> 1V</label>
+                </div>
+                <button class="check-btn">Check</button>
+                <div class="feedback" style="display: none;"></div>
+            </div>
+
+            <div class="problem">
+                <h3>Problem 2</h3>
+                <p>In a loop with a 12V source and two resistors 3Ω and 3Ω carrying 2A, what is the Kirchhoff loop sum? (Take source as +12V, drops as -V)</p>
+                <div class="quiz-options">
+                    <label><input type="radio" name="q2" value="0"> 0V</label>
+                    <label><input type="radio" name="q2" value="-12"> -12V</label>
+                    <label><input type="radio" name="q2" value="12"> 12V</label>
+                    <label><input type="radio" name="q2" value="6"> 6V</label>
+                </div>
+                <button class="check-btn">Check</button>
+                <div class="feedback" style="display: none;"></div>
+            </div>
+
+            <div class="problem">
+                <h3>Problem 3</h3>
+                <p>In a loop, there is +15V source, -5V drop, -5V drop. Find the remaining voltage drop to satisfy KVL.</p>
+                <div class="quiz-options">
+                    <label><input type="radio" name="q3" value="-5"> -5V</label>
+                    <label><input type="radio" name="q3" value="5"> 5V</label>
+                    <label><input type="radio" name="q3" value="-10"> -10V</label>
+                    <label><input type="radio" name="q3" value="0"> 0V</label>
+                </div>
+                <button class="check-btn">Check</button>
+                <div class="feedback" style="display: none;"></div>
+            </div>
+
+            <div class="problem">
+                <h3>Problem 4</h3>
+                <p>Loop equation is 5V - 2V - 3V + Vx = 0. What is Vx?</p>
+                <div class="quiz-options">
+                    <label><input type="radio" name="q4" value="0"> 0V</label>
+                    <label><input type="radio" name="q4" value="-1"> -1V</label>
+                    <label><input type="radio" name="q4" value="1"> 1V</label>
+                    <label><input type="radio" name="q4" value="10"> 10V</label>
+                </div>
+                <button class="check-btn">Check</button>
+                <div class="feedback" style="display: none;"></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="next-section">
+        <a href="Kirchoff'sVoltageLawContent.html" class="btn back-btn">Back to Course Content</a>
+        <a href="circuit-simulator.html" class="btn next-btn">Next: Circuit Simulator</a>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            function shuffleArray(array) {
+                for (let i = array.length - 1; i > 0; i--) {
+                    const j = Math.floor(Math.random() * (i + 1));
+                    [array[i], array[j]] = [array[j], array[i]];
+                }
+                return array;
+            }
+
+            const quizOptionsContainers = document.querySelectorAll('.quiz-options');
+            quizOptionsContainers.forEach(container => {
+                const labels = Array.from(container.querySelectorAll('label'));
+                const shuffledLabels = shuffleArray(labels);
+                container.innerHTML = '';
+                shuffledLabels.forEach(label => {
+                    container.appendChild(label);
+                });
+            });
+
+            const checkButtons = document.querySelectorAll('.check-btn');
+
+            checkButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const problem = this.closest('.problem');
+                    const selectedOption = problem.querySelector('input[type="radio"]:checked');
+                    const feedback = problem.querySelector('.feedback');
+
+                    if (!selectedOption) {
+                        feedback.textContent = 'Please select an answer.';
+                        feedback.style.color = '#ff6b6b';
+                        feedback.style.display = 'block';
+                        return;
+                    }
+
+                    const questionName = selectedOption.name;
+                    let correctAnswer = '';
+
+                    if (questionName === 'q1') {
+                        correctAnswer = '0';
+                    } else if (questionName === 'q2') {
+                        correctAnswer = '0';
+                    } else if (questionName === 'q3') {
+                        correctAnswer = '-5';
+                    } else if (questionName === 'q4') {
+                        correctAnswer = '0';
+                    }
+
+                    if (selectedOption.value === correctAnswer) {
+                        feedback.textContent = '✓ Correct!';
+                        feedback.style.color = '#28a745';
+                    } else {
+                        feedback.textContent = '✗ Incorrect. Try again.';
+                        feedback.style.color = '#ff6b6b';
+                    }
+
+                    feedback.style.display = 'block';
+                });
+            });
+        });
+    </script>
+</body>
+</html>
