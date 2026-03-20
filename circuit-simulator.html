@@ -106,6 +106,7 @@
             <button data-tool="select" class="active">Select</button>
             <button data-tool="resistor">Resistor</button>
             <button data-tool="battery">Battery</button>
+            <button data-tool="node">Node</button>
             <button data-tool="wire">Wire</button>
             <button data-tool="delete">Delete</button>
             <button id="clearBtn" type="button">Clear</button>
@@ -119,7 +120,9 @@
         <p class="instructions">
             1) Pick a tool (Resistor or Battery) and click the canvas to place it.
             <br>2) Switch to Wire mode, then click two components to connect them.
-            <br>3) Click “Simulate Circuit” to see a quick result (series circuits only).
+            <br>3) Add nodes or connect wires to create branching/parallel paths.
+            <br>4) Click “Simulate Circuit” to see a quick result.
+            <br>5) Double‑click any component to edit its value (supports units like <code>10k</code> or <code>9V</code>).
         </p>
         <p class="status" id="status">Tool: Select</p>
     </div>
