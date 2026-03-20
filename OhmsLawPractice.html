@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ohm's Law Practice Problems - Learn Electronics & Circuit Design</title>
+    <link rel="stylesheet" href="OhmsLawCourse.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">⚡ Circuit</div>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="courses.html">Courses</a></li>
+                <li><a href="circuit-simulator.html">Circuit Simulator</a></li>
+                <li><a href="tutorials.html">Tutorials</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <h1>Ohm's Law Practice Problems</h1>
+        <p>Test your understanding with these interactive practice problems.</p>
+    </section>
+
+    <div class="container">
+        <div class="practice-problems">
+            <h2>Practice Problems</h2>
+
+            <div class="problem">
+                <h3>Problem 1</h3>
+                <p>A circuit has a voltage of 12V and a resistance of 4Ω. What is the current flowing through the circuit?</p>
+                <div class="solution" style="display: none;">
+                    <p><strong>Solution:</strong> Using Ohm's Law: I = V/R = 12V / 4Ω = 3A</p>
+                </div>
+                <button class="solution-btn">Show Solution</button>
+            </div>
+
+            <div class="problem">
+                <h3>Problem 2</h3>
+                <p>If a resistor has a current of 2A flowing through it and a voltage of 10V across it, what is the resistance?</p>
+                <div class="solution" style="display: none;">
+                    <p><strong>Solution:</strong> Using Ohm's Law: R = V/I = 10V / 2A = 5Ω</p>
+                </div>
+                <button class="solution-btn">Show Solution</button>
+            </div>
+
+            <div class="problem">
+                <h3>Problem 3</h3>
+                <p>What voltage is needed to produce a current of 0.5A through a 20Ω resistor?</p>
+                <div class="solution" style="display: none;">
+                    <p><strong>Solution:</strong> Using Ohm's Law: V = I × R = 0.5A × 20Ω = 10V</p>
+                </div>
+                <button class="solution-btn">Show Solution</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="next-section">
+        <a href="OhmsLawCourseContent.html" class="btn back-btn">Back to Course Content</a>
+        <a href="circuit-simulator.html" class="btn next-btn">Next: Circuit Simulator</a>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const showSolutionButtons = document.querySelectorAll('.solution-btn');
+
+            showSolutionButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const solution = this.previousElementSibling;
+                    if (solution.style.display === 'none') {
+                        solution.style.display = 'block';
+                        this.textContent = 'Hide Solution';
+                    } else {
+                        solution.style.display = 'none';
+                        this.textContent = 'Show Solution';
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
