@@ -206,6 +206,76 @@ footer {
 }
 
 .problem {
+    background: #f8f9fa;
+    border-radius: 12px;
+    padding: 2rem;
+    margin: 2rem 0;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.problem h3 {
+    color: #ff6b6b;
+    margin-bottom: 1rem;
+    font-size: 1.5rem;
+}
+
+.problem p {
+    margin-bottom: 1.5rem;
+    line-height: 1.7;
+    color: #555;
+}
+
+.solution-btn, .submit-btn {
+    background: linear-gradient(135deg, #667eea 0%, #ff6b6b 100%);
+    color: white;
+    border: none;
+    padding: 0.75rem 1.5rem;
+    border-radius: 25px;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 1rem;
+    margin: 0.5rem 0;
+    transition: all 0.3s ease;
+}
+
+.solution-btn:hover, .submit-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(255, 107, 107, 0.4);
+}
+
+.quiz-options {
+    margin: 1rem 0;
+}
+
+.quiz-options label {
+    display: block;
+    margin: 0.5rem 0;
+    padding: 0.5rem;
+    background: #fff;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.quiz-options label:hover {
+    background: #e9ecef;
+}
+
+.quiz-options input[type="radio"] {
+    margin-right: 0.5rem;
+}
+
+.feedback {
+    margin: 1rem 0;
+    font-weight: bold;
+}
+
+/* Practice Problems Styles */
+.practice-problems {
+    margin: 2rem 0;
+}
+
+.problem {
     background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
     border-radius: 12px;
     padding: 2rem;
