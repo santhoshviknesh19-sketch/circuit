@@ -33,6 +33,29 @@
             <div class="problem">
                 <h3>Problem 1</h3>
                 <p>At a node, 3A and 5A are entering. How much current must leave the node to satisfy KCL?</p>
+                <div class="circuit-diagram">
+                    <svg width="250" height="150" viewBox="0 0 250 150">
+                        <defs>
+                            <marker id="arrowhead-kcl-p" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+                                <polygon points="0 0, 8 3, 0 6" fill="#ff6b6b" />
+                            </marker>
+                        </defs>
+                        <!-- Node -->
+                        <circle cx="125" cy="75" r="6" fill="#fff" stroke="#000" stroke-width="2"/>
+                        <!-- Branch 1: 3A entering -->
+                        <line x1="50" y1="75" x2="119" y2="75" stroke="#000" stroke-width="3"/>
+                        <line x1="70" y1="60" x2="70" y2="50" stroke="#ff6b6b" stroke-width="2" marker-end="url(#arrowhead-kcl-p)"/>
+                        <text x="75" y="55" font-size="10" fill="#ff6b6b">3A</text>
+                        <!-- Branch 2: 5A entering -->
+                        <line x1="125" y1="30" x2="125" y2="69" stroke="#000" stroke-width="3"/>
+                        <line x1="110" y1="45" x2="100" y2="45" stroke="#ff6b6b" stroke-width="2" marker-end="url(#arrowhead-kcl-p)"/>
+                        <text x="95" y="50" font-size="10" fill="#ff6b6b">5A</text>
+                        <!-- Branch 3: X leaving -->
+                        <line x1="131" y1="75" x2="200" y2="75" stroke="#000" stroke-width="3"/>
+                        <line x1="165" y1="90" x2="165" y2="100" stroke="#ff6b6b" stroke-width="2" marker-end="url(#arrowhead-kcl-p)"/>
+                        <text x="170" y="105" font-size="10" fill="#ff6b6b">X</text>
+                    </svg>
+                </div>
                 <div class="quiz-options">
                     <label><input type="radio" name="q1" value="8"> 8A</label>
                     <label><input type="radio" name="q1" value="2"> 2A</label>

@@ -383,3 +383,28 @@ footer {
 .back-btn:hover {
     box-shadow: 0 8px 25px rgba(108, 117, 125, 0.6);
 }
+
+/* Circuit Diagram Styles */
+.circuit-diagram {
+    text-align: center;
+    margin: 2rem 0;
+    padding: 1rem;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    overflow-x: auto;
+}
+
+.circuit-diagram svg {
+    max-width: 100%;
+    height: auto;
+    margin-bottom: 0.5rem;
+    min-width: 400px;
+}
+
+.diagram-caption {
+    font-size: 0.9rem;
+    color: #666;
+    font-style: italic;
+    margin-top: 0.5rem;
+}
