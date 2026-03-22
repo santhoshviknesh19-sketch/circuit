@@ -328,11 +328,13 @@ function drawComponents() {
       const hue = 60; // Yellow
       const saturation = 80 + brightness * 20; // Range 80-100
       const lightness = 50 + brightness * 30; // Range 50-80
-      fillColor = `hsl(${hue}, ${saturation}%, ${lightness}%)`;\n      strokeColor = brightness > 0.1 ? '#ff8800' : '#ffa000';
+      fillColor = `hsl(${hue}, ${saturation}%, ${lightness}%)`;
+      strokeColor = brightness > 0.1 ? '#ff8800' : '#ffa000';
       
       // Draw glow effect if power > 0
       if (brightness > 0.05) {
-        ctx.fillStyle = `rgba(255, 200, 0, ${brightness * 0.3})`;\n        ctx.beginPath();
+        ctx.fillStyle = `rgba(255, 200, 0, ${brightness * 0.3})`;
+        ctx.beginPath();
         ctx.arc(0, 0, 35 + brightness * 15, 0, Math.PI * 2);
         ctx.fill();
       }
