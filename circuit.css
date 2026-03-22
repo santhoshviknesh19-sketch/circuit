@@ -7,8 +7,7 @@
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     line-height: 1.6;
-    color: #ffffff;
-    background: #1a1a2e;
+    color: #000;
 }
 
 header {
@@ -125,17 +124,17 @@ nav a:hover {
 }
 
 .feature-card {
-    border: 1px solid rgba(255, 255, 255, 0.2);
+    border: 1px solid #ddd;
     padding: 2rem;
     border-radius: 8px;
     text-align: center;
     transition: box-shadow 0.3s;
-    background: rgba(255, 255, 255, 0.05);
-    color: rgba(255, 255, 255, 0.9);
+    background: white;
+    color: #333;
 }
 
 .feature-card:hover {
-    box-shadow: 0 4px 12px rgba(255, 107, 107, 0.2);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
 .feature-card h3 {
