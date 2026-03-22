@@ -28,6 +28,7 @@ const state = {
   drag: null,
   wireStart: null,
   hoverId: null,
+  componentPower: {}, // Maps component ID to power dissipation
 };
 
 const settings = {
@@ -255,6 +256,7 @@ function clearAll() {
   state.components = [];
   state.wires = [];
   state.wireStart = null;
+  state.componentPower = {};
   draw();
 }
 
@@ -313,8 +315,34 @@ function drawComponents() {
     }
 
     // Draw component body
-    ctx.fillStyle = isHover ? settings.highlightColor : (comp.type === COMPONENT.LIGHTBULB ? '#ffeb3b' : settings.componentColor);
-    ctx.strokeStyle = isHover ? settings.highlightColor : (comp.type === COMPONENT.LIGHTBULB ? '#ffa000' : '#ffffff');
+    let fillColor = settings.componentColor;
+    let strokeColor = '#ffffff';
+    
+    if (comp.type === COMPONENT.LIGHTBULB) {
+      // Calculate brightness based on power dissipation
+      const power = state.componentPower[comp.id] || 0;
+      // Power brightness: scale from dim to bright yellow
+      // Normalize power to 0-1 range (assume max ~50W for a typical circuit)
+      const brightness = Math.min(1, power / 50);
+      // Create HSL color that gets brighter/more saturated with power
+      const hue = 60; // Yellow
+      const saturation = 80 + brightness * 20; // Range 80-100
+      const lightness = 50 + brightness * 30; // Range 50-80
+      fillColor = `hsl(${hue}, ${saturation}%, ${lightness}%)`;\n      strokeColor = brightness > 0.1 ? '#ff8800' : '#ffa000';
+      
+      // Draw glow effect if power > 0
+      if (brightness > 0.05) {
+        ctx.fillStyle = `rgba(255, 200, 0, ${brightness * 0.3})`;\n        ctx.beginPath();
+        ctx.arc(0, 0, 35 + brightness * 15, 0, Math.PI * 2);
+        ctx.fill();
+      }
+    } else if (isHover) {
+      fillColor = settings.highlightColor;
+      strokeColor = settings.highlightColor;
+    }
+    
+    ctx.fillStyle = fillColor;
+    ctx.strokeStyle = strokeColor;
     ctx.lineWidth = isHover ? 3 : 2;
     ctx.beginPath();
     ctx.roundRect(-30, -15, 60, 30, 8);
@@ -515,6 +543,9 @@ function simulateCircuit() {
     statusEl.textContent = `Tool: ${state.tool} — Add components to simulate.`;
     return;
   }
+
+  // Reset power values
+  state.componentPower = {};
 
   // Build component adjacency based on wires (for grouping)
   const compAdj = new Map();
@@ -795,6 +826,24 @@ function simulateCircuit() {
     }
 
     const current = batteryVoltage / eq.R;
+
+    // Calculate power dissipation for each resistor and lightbulb
+    for (const resistor of resistors) {
+      const power = current * current * resistor.r; // P = I²R
+      // Find the component corresponding to this resistor
+      for (const comp of comps) {
+        if ((comp.type === COMPONENT.RESISTOR || comp.type === COMPONENT.LIGHTBULB)) {
+          const n0 = endpointNet[endpointKey({ compId: comp.id, terminal: 0 })];
+          const n1 = endpointNet[endpointKey({ compId: comp.id, terminal: 1 })];
+          if ((n0 === resistor.n0 && n1 === resistor.n1) || (n0 === resistor.n1 && n1 === resistor.n0)) {
+            state.componentPower[comp.id] = Math.abs(power); // Store absolute power value
+            break;
+          }
+        }
+      }
+    }
+    
+    draw(); // Redraw to show updated lightbulb brightness
 
     const formatValue = (value) => {
       if (value === null || value === undefined || Number.isNaN(value)) return '—';
