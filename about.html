@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Circuit - Learn Electronics & Circuit Design</title>
+    <link rel="stylesheet" href="circuit.css">
+    <style>
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .team-card {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 12px;
+            padding: 2rem;
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .team-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(255, 215, 0, 0.2);
+        }
+
+        .team-card h3 {
+            font-size: 1.5rem;
+            margin: 1rem 0 0.5rem;
+            color: #fff;
+        }
+
+        .team-card .role {
+            color: #ffd966;
+            font-weight: 600;
+            font-size: 0.95rem;
+            margin-bottom: 1rem;
+        }
+
+        .team-card p {
+            font-size: 0.95rem;
+            line-height: 1.6;
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        .team-emoji {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .story-section {
+            background: rgba(255, 255, 255, 0.05);
+            border-left: 4px solid #ffd966;
+            padding: 2rem;
+            margin: 2rem 0;
+            border-radius: 8px;
+        }
+
+        .story-section h3 {
+            color: #ffd966;
+            margin-top: 0;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">⚡ Circuit</div>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="courses.html">Courses</a></li>
+                <li><a href="circuit-simulator.html">Circuit Simulator</a></li>
+                <li><a href="#tutorials">Tutorials</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <h1>About Circuit</h1>
+        <p>Four students, one hackathon, and a passion for making electronics accessible to everyone.</p>
+    </section>
+
+    <div class="container">
+        <section class="story-section">
+            <h3>📖 Our Story</h3>
+            <p>
+                Circuit was born during our school's annual hackathon—a place where creative ideas come to life. 
+                Four students from different backgrounds came together with a shared vision: to make electrical engineering 
+                accessible and engaging for everyone. What started as a 24-hour challenge quickly evolved into something we 
+                were truly passionate about.
+            </p>
+            <p>
+                We realized that many students struggle with electronics because available resources are either too simple 
+                or too complex, with little room for hands-on, interactive learning. So we built Circuit—a comprehensive 
+                platform that combines interactive tutorials, practical projects, and cutting-edge simulation tools. Every 
+                feature we develop is driven by real feedback from students and educators.
+            </p>
+        </section>
+
+        <h2 style="text-align: center; margin: 3rem 0 2rem;">Meet the Team</h2>
+        <div class="team-grid">
+            <div class="team-card">
+                <div class="team-emoji">👨‍💼</div>
+                <h3>Sam</h3>
+                <div class="role">Project Lead & Full Stack Developer</div>
+                <p>
+                    Sam is the driving force behind Circuit's vision, overseeing the project's direction and leading the 
+                    development of core platform features. Their passion for education and technology makes them instrumental 
+                    in bridging the gap between complex concepts and user-friendly design.
+                </p>
+            </div>
+
+            <div class="team-card">
+                <div class="team-emoji">⚡</div>
+                <h3>Aarnav</h3>
+                <div class="role">Electronics Expert & Curriculum Developer</div>
+                <p>
+                    Aarnav brings deep expertise in electrical engineering and circuit design. They are responsible for 
+                    creating accurate, comprehensive course content and ensuring that every lesson is rooted in solid 
+                    engineering principles while remaining accessible to learners of all levels.
+                </p>
+            </div>
+
+            <div class="team-card">
+                <div class="team-emoji">🎨</div>
+                <h3>Darsheel</h3>
+                <div class="role">Frontend Developer & UI/UX Designer</div>
+                <p>
+                    Darsheel crafts the beautiful, intuitive interfaces that make learning enjoyable. Their attention to 
+                    detail and design sense ensure that every button, color, and animation enhances the user experience and 
+                    makes the platform a pleasure to navigate.
+                </p>
+            </div>
+
+            <div class="team-card">
+                <div class="team-emoji">🔧</div>
+                <h3>Carter</h3>
+                <div class="role">Backend Engineer & Circuit Simulator Developer</div>
+                <p>
+                    Carter is the genius behind the interactive circuit simulator, building robust backend systems and 
+                    complex simulation engines. Their technical expertise allows users to experiment with circuits safely 
+                    and see real-time results from their designs.
+                </p>
+            </div>
+        </div>
+
+        <section class="story-section">
+            <h3>🎯 Our Mission</h3>
+            <p>
+                At Circuit, we believe that electrical engineering and electronics should be accessible to everyone. Our 
+                mission is to break down complex concepts into digestible, interactive lessons that inspire the next generation 
+                of engineers and innovators.
+            </p>
+            <p>
+                We're passionate about making learning engaging, practical, and fun. Whether you're a complete beginner or 
+                looking to deepen your knowledge, Circuit is here to guide you through the fascinating world of electronics.
+            </p>
+        </section>
+
+        <section class="story-section">
+            <h3>🚀 What We're Building</h3>
+            <p>
+                Circuit combines multiple learning approaches to help you master electronics:
+            </p>
+            <ul style="line-height: 1.8; opacity: 0.95;">
+                <li><strong>Interactive Courses</strong> - Learn fundamental concepts like Ohm's Law, Kirchhoff's Laws, and capacitance</li>
+                <li><strong>Hands-on Simulator</strong> - Design and test circuits in real-time with our advanced circuit simulator</li>
+                <li><strong>Practice Problems</strong> - Solve real-world problems and reinforce your understanding</li>
+                <li><strong>Best Practices</strong> - Develop proper circuit design habits and troubleshooting skills</li>
+            </ul>
+        </section>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 Circuit. All rights reserved.</p>
+    </footer>
+</body>
+</html>
