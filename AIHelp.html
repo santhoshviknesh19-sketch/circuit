@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Help - Circuit Learning Assistant</title>
+    <link rel="stylesheet" href="courses.css">
+    <link rel="stylesheet" href="AIHelp.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">⚡ Circuit</div>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="courses.html">Courses</a></li>        
+                <li><a href="circuit-simulator.html">Circuit Simulator</a></li>
+                <li><a href="tutorials.html">Tutorials</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contacts.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <h1>AI Help</h1>
+        <p>Get instant help from AI on circuit design and electronics!</p>
+    </section>
+
+    <div class="container">
+        <h2>Ask Your Question</h2>
+        <p>Enter your question about circuits, Ohm's Law, Kirchhoff's Laws, or any electronics topic, and get a helpful response from our AI assistant.</p>
+        
+        <form id="ai-form">
+            <textarea id="question" placeholder="Type your question here..." rows="4" required></textarea>
+            <button type="submit" class="btn">🤖 Ask AI</button>
+        </form>
+        
+        <div id="response" style="margin-top: 20px; display: none;">
+            <h3>AI Response:</h3>
+            <div id="answer"></div>
+        </div>
+        
+        <div id="thinking" style="margin-top: 20px; display: none;">
+            <p>🤖 AI is thinking...</p>
+        </div>
+        
+        <div id="error" style="margin-top: 20px; display: none; color: red;">
+            <p id="error-message"></p>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('ai-form').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            const question = document.getElementById('question').value;
+            const responseDiv = document.getElementById('response');
+            const answerDiv = document.getElementById('answer');
+            const errorDiv = document.getElementById('error');
+            const errorMsg = document.getElementById('error-message');
+            const thinkingDiv = document.getElementById('thinking');
+            const submitBtn = document.querySelector('#ai-form button');
+            
+            // Hide previous responses
+            responseDiv.style.display = 'none';
+            errorDiv.style.display = 'none';
+            thinkingDiv.style.display = 'block';
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Thinking...';
+            
+            try {
+                const res = await fetch('http://localhost:5000/ask', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ question: question })
+                });
+                
+                const data = await res.json();
+                
+                if (res.ok) {
+                    answerDiv.innerHTML = data.answer.replace(/\n/g, '<br>');
+                    responseDiv.style.display = 'block';
+                } else {
+                    errorMsg.textContent = data.error || 'An error occurred';
+                    errorDiv.style.display = 'block';
+                }
+            } catch (err) {
+                errorMsg.textContent = 'Failed to connect to AI server. Make sure the server is running.';
+                errorDiv.style.display = 'block';
+            } finally {
+                thinkingDiv.style.display = 'none';
+                submitBtn.disabled = false;
+                submitBtn.textContent = '🤖 Ask AI';
+            }
+        });
+    </script>
+</body>
+</html>
