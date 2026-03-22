@@ -8,6 +8,7 @@ const TOOL = {
   SELECT: 'select',
   RESISTOR: 'resistor',
   BATTERY: 'battery',
+  LIGHTBULB: 'lightbulb',
   NODE: 'node',
   WIRE: 'wire',
   DELETE: 'delete',
@@ -16,6 +17,7 @@ const TOOL = {
 const COMPONENT = {
   RESISTOR: 'Resistor',
   BATTERY: 'Battery',
+  LIGHTBULB: 'Lightbulb',
   NODE: 'Node',
 };
 
@@ -198,8 +200,19 @@ function parseValueInput(input, defaultValue) {
 
 function promptEditComponentValue(comp) {
   if (!comp || comp.type === COMPONENT.NODE) return;
-  const label = comp.type === COMPONENT.RESISTOR ? 'Resistance (Ω)' : 'Voltage (V)';
-  const current = comp.value ?? (comp.type === COMPONENT.RESISTOR ? 100 : 5);
+  let label = '';
+  let defaultVal = 0;
+  if (comp.type === COMPONENT.RESISTOR) {
+    label = 'Resistance (Ω)';
+    defaultVal = 100;
+  } else if (comp.type === COMPONENT.BATTERY) {
+    label = 'Voltage (V)';
+    defaultVal = 5;
+  } else if (comp.type === COMPONENT.LIGHTBULB) {
+    label = 'Resistance (Ω)';
+    defaultVal = 10;
+  }
+  const current = comp.value ?? defaultVal;
   const input = prompt(`Set ${label}:`, current);
   if (input === null) return;
   const parsed = parseValueInput(input, current);
@@ -300,8 +313,8 @@ function drawComponents() {
     }
 
     // Draw component body
-    ctx.fillStyle = isHover ? settings.highlightColor : settings.componentColor;
-    ctx.strokeStyle = isHover ? settings.highlightColor : '#ffffff';
+    ctx.fillStyle = isHover ? settings.highlightColor : (comp.type === COMPONENT.LIGHTBULB ? '#ffeb3b' : settings.componentColor);
+    ctx.strokeStyle = isHover ? settings.highlightColor : (comp.type === COMPONENT.LIGHTBULB ? '#ffa000' : '#ffffff');
     ctx.lineWidth = isHover ? 3 : 2;
     ctx.beginPath();
     ctx.roundRect(-30, -15, 60, 30, 8);
@@ -325,6 +338,7 @@ function drawComponents() {
     let label = '';
     if (comp.type === COMPONENT.RESISTOR) label = `R ${comp.value}Ω`;
     else if (comp.type === COMPONENT.BATTERY) label = `V ${comp.value}V`;
+    else if (comp.type === COMPONENT.LIGHTBULB) label = '💡';
     ctx.fillText(label, 0, 0);
 
     ctx.restore();
@@ -422,6 +436,18 @@ function onPointerDown(evt) {
       const value = parseValueInput(valueInput, 5);
       addComponent(
         COMPONENT.BATTERY,
+        snapToGrid(pos.x),
+        snapToGrid(pos.y),
+        Number.isFinite(value) && value >= 0 ? value : undefined
+      );
+      break;
+    }
+
+    case TOOL.LIGHTBULB: {
+      const valueInput = prompt('Enter bulb resistance (Ω):', '10');
+      const value = parseValueInput(valueInput, 10);
+      addComponent(
+        COMPONENT.LIGHTBULB,
         snapToGrid(pos.x),
         snapToGrid(pos.y),
         Number.isFinite(value) && value >= 0 ? value : undefined
@@ -752,15 +778,15 @@ function simulateCircuit() {
     }
 
     const resistors = comps
-      .filter((c) => c.type === COMPONENT.RESISTOR)
+      .filter((c) => c.type === COMPONENT.RESISTOR || c.type === COMPONENT.LIGHTBULB)
       .map((r) => {
         const n0 = endpointNet[endpointKey({ compId: r.id, terminal: 0 })];
         const n1 = endpointNet[endpointKey({ compId: r.id, terminal: 1 })];
-        return { n0, n1, r: Number(r.value || 0) };
+        return { n0, n1, r: Number(r.value || 0), isLight: r.type === COMPONENT.LIGHTBULB };
       });
 
     if (resistors.length === 0) {
-      return `Group ${index + 1}: No resistors (add resistors to get a meaningful current).`;
+      return `Group ${index + 1}: No resistors or lightbulbs (add resistors or lightbulbs to get a meaningful current).`;
     }
 
     const eq = computeEquivalentResistance(resistors, battA, battB);
