@@ -3,7 +3,7 @@
 <head>
    <meta charset="UTF-8">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <title>AI Help - Your Friendly Circuit Assistant</title>
+   <title>AI Help - Circuit Learning Assistant</title>
    <link rel="stylesheet" href="circuit.css">
    <link rel="stylesheet" href="AIHelp.css">
    <link rel="icon" href="./logo.png" type="text/x-icon">
@@ -24,33 +24,36 @@
        </nav>
    </header>
 
+
    <section class="hero">
-       <h1>🤖 AI Help – Your Circuit Buddy!</h1>
-       <p>Stuck on a circuit? Ask me anything about electronics, and I'll help out!</p>
+       <h1>AI Help</h1>
+       <p>Get instant help from AI on circuit design and electronics!</p>
    </section>
 
+
    <div class="container">
-       <h2>What's on your mind?</h2>
-       <p>Got a question about Ohm's Law, Kirchhoff's rules, or any circuit puzzle? Type it in below – I might take a sec to think, but I'll give you a solid answer! 😊</p>
+       <h2>Ask Your Question</h2>
+       <p>Enter your question about circuits, Ohm's Law, Kirchhoff's Laws, or any electronics topic, and get a helpful response from our AI assistant. It can be slow for some users, so be patient!</p>
       
        <form id="ai-form">
-           <textarea id="question" placeholder="E.g., 'How do I use Ohm's Law?' or 'Explain KVL'..." rows="4" required></textarea>
-           <button type="submit" class="btn">🤖 Get Answer</button>
+           <textarea id="question" placeholder="Type your question here..." rows="4" required></textarea>
+           <button type="submit" class="btn">🤖 Ask AI</button>
        </form>
       
        <div id="response" style="margin-top: 20px; display: none;">
-           <h3>Here's what I think:</h3>
+           <h3>AI Response:</h3>
            <div id="answer"></div>
        </div>
       
        <div id="thinking" style="margin-top: 20px; display: none;">
-           <p>🤖 Hmm, let me think about that...</p>
+           <p>🤖 AI is thinking...</p>
        </div>
       
        <div id="error" style="margin-top: 20px; display: none; color: red;">
            <p id="error-message"></p>
        </div>
    </div>
+
 
    <script>
        document.getElementById('ai-form').addEventListener('submit', async function(e) {
@@ -63,6 +66,7 @@
            const thinkingDiv = document.getElementById('thinking');
            const submitBtn = document.querySelector('#ai-form button');
           
+           // Hide previous responses
            responseDiv.style.display = 'none';
            errorDiv.style.display = 'none';
            thinkingDiv.style.display = 'block';
@@ -84,16 +88,16 @@
                    answerDiv.innerHTML = data.answer.replace(/\n/g, '<br>');
                    responseDiv.style.display = 'block';
                } else {
-                   errorMsg.textContent = data.error || 'Something went wrong';
+                   errorMsg.textContent = data.error || 'An error occurred';
                    errorDiv.style.display = 'block';
                }
            } catch (err) {
-               errorMsg.textContent = "Can't reach the AI server right now. Double-check if it's running!";
+               errorMsg.textContent = 'Failed to connect to AI server. Make sure the server is running.';
                errorDiv.style.display = 'block';
            } finally {
                thinkingDiv.style.display = 'none';
                submitBtn.disabled = false;
-               submitBtn.textContent = '🤖 Get Answer';
+               submitBtn.textContent = '🤖 Ask AI';
            }
        });
    </script>
@@ -102,3 +106,6 @@
    </footer>
 </body>
 </html>
+
+
+
