@@ -1,15 +1,16 @@
-# Fix AI Server Connection Error - Progress Tracker
+# Humanize Text Task Progress
 
-## Status: In Progress
+## Plan Breakdown
+1. [x] Create TODO.md (done)
+2. [x] Humanize index.html → index_humanized.html
+3. [x] Humanize courses.html → courses_humanized.html
+4. [x] Humanize AIHelp.html → AIHelp_humanized.html
+5. [x] Humanize OhmsLawCourseContent.html → OhmsLawCourseContent_humanized.html
+6. [x] Humanize CapacitanceCourseContent.html → CapacitanceCourseContent_humanized.html
+7. [x] Humanize FindingEqContent.html → FindingEqContent_humanized.html
+8. [ ] Humanize Kirchoff* files and others (KVL, KCL practice/content)
+9. [ ] Test: open humanized index/courses
+10. [ ] Complete: suggest replacing originals
 
-### Steps:
-- [x] 1. Install Python dependencies: flask, flask-cors, ollama
-- [x] 2. Install Ollama binary ✓
-- [x] 3. Pull 'phi' model for Ollama ✓
-- [x] 4. Start ai_help.py Flask server on port 5000 ✓
-- [x] 5. Verify/test AIHelp.html in browser (no more connection error) ✓
-
-**Status: COMPLETE**
-
-**Next:** Executing installations step-by-step.
+Next: Kirchoff's law content files
 
