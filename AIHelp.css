@@ -1,6 +1,7 @@
 /* AI Help specific styles */
 .hero {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    /* FIXED: Changed #764ba2 to #ff6b6b to match Home page */
+    background: linear-gradient(135deg, #667eea 0%, #ff6b6b 100%);
     color: white;
     padding: 4rem 2rem;
     text-align: center;
@@ -57,25 +58,29 @@ textarea {
 
 textarea:focus {
     outline: none;
+    /* FIXED: Updated focus color to match the blue from your gradient */
     border-color: #667eea;
     box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
 }
 
 .btn {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    /* FIXED: Updated gradient and added the shadow from circuit.css */
+    background: linear-gradient(135deg, #667eea 0%, #ff6b6b 100%);
     color: white;
     border: none;
     padding: 1rem 2rem;
-    border-radius: 8px;
+    border-radius: 50px; /* Rounded more to match home page buttons */
     font-size: 1.1rem;
+    font-weight: 600;
     cursor: pointer;
     transition: transform 0.2s ease, box-shadow 0.2s ease;
     align-self: flex-start;
+    box-shadow: 0 4px 15px rgba(255, 107, 107, 0.4);
 }
 
 .btn:hover:not(:disabled) {
     transform: translateY(-2px);
-    box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+    box-shadow: 0 8px 25px rgba(255, 107, 107, 0.6);
 }
 
 .btn:disabled {
@@ -85,7 +90,8 @@ textarea:focus {
 
 #thinking {
     text-align: center;
-    color: #667eea;
+    /* FIXED: Using the coral color for the thinking text */
+    color: #ff6b6b;
     font-weight: bold;
     animation: pulse 1.5s infinite;
 }
@@ -104,6 +110,7 @@ textarea:focus {
 }
 
 #response h3 {
+    /* Using the green as requested, but you could change this to #667eea for brand consistency */
     color: #28a745;
     margin-bottom: 1rem;
 }
