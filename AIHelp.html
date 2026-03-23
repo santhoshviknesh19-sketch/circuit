@@ -24,12 +24,12 @@
 
     <section class="hero">
         <h1>AI Help</h1>
-        <p>Get instant help from AI on circuit design and electronics!</p>
+        <p>Get instant help from AI on circuit design and electronics! (Python/Ollama backend)</p>
     </section>
 
     <div class="container">
         <h2>Ask Your Question</h2>
-        <p>Enter your question about circuits, Ohm's Law, Kirchhoff's Laws, or any electronics topic, and get a helpful response from our AI assistant.It can be slow for some users so be patient!</p>
+        <p>Enter your question about circuits, Ohm's Law, Kirchhoff's Laws, or any electronics topic, and get a helpful response from our AI assistant.</p>
         
         <form id="ai-form">
             <textarea id="question" placeholder="Type your question here..." rows="4" required></textarea>
@@ -42,7 +42,7 @@
         </div>
         
         <div id="thinking" style="margin-top: 20px; display: none;">
-            <p>🤖 AI is thinking...</p>
+            <p>🤖 AI is thinking... (Ollama Phi model)</p>
         </div>
         
         <div id="error" style="margin-top: 20px; display: none; color: red;">
@@ -61,7 +61,7 @@
             const thinkingDiv = document.getElementById('thinking');
             const submitBtn = document.querySelector('#ai-form button');
             
-            // Hide previous responses
+            // Hide previous
             responseDiv.style.display = 'none';
             errorDiv.style.display = 'none';
             thinkingDiv.style.display = 'block';
@@ -69,25 +69,26 @@
             submitBtn.textContent = 'Thinking...';
             
             try {
-                const res = await fetch('http://localhost:5000/ask', {
+                const host = window.location.hostname || 'localhost';
+                const res = await fetch(`http://${host}:5000/ask`, {
                     method: 'POST',
                     headers: {
-                        'Content-Type': 'application/json'
+                        'Content-Type': 'application/json',
                     },
-                    body: JSON.stringify({ question: question })
+                    body: JSON.stringify({question: question})
                 });
                 
                 const data = await res.json();
                 
                 if (res.ok) {
-                    answerDiv.innerHTML = data.answer.replace(/\n/g, '<br>');
+                    answerDiv.innerHTML = data.answer.replace(/\\n/g, '<br>');
                     responseDiv.style.display = 'block';
                 } else {
-                    errorMsg.textContent = data.error || 'An error occurred';
+                    errorMsg.textContent = data.error || 'Server error. Check Python server.';
                     errorDiv.style.display = 'block';
                 }
             } catch (err) {
-                errorMsg.textContent = 'Failed to connect to AI server. Make sure the server is running.';
+                errorMsg.textContent = 'Connection issue. Python server running? Try refresh/reload.';
                 errorDiv.style.display = 'block';
             } finally {
                 thinkingDiv.style.display = 'none';
