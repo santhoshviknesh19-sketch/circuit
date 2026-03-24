@@ -2,5 +2,5 @@
 AIHelp.js
 
 .venv/
-.backup/
-
+backup/
+.vscode
