@@ -31,7 +31,7 @@
 
    <div class="container">
        <h2>What's on your mind?</h2>
-       <p>Got a question about Ohm's Law, Kirchhoff's rules, or any circuit puzzle? Type it in below – I might take a sec to think, but I'll give you a solid answer! 😊</p>
+       <p>Got a question about Ohm's Law, Kirchhoff's rules, or any circuit puzzle? Type it in below – now using browser JS + Groq AI (no Python server needed)!</p>
       
        <form id="ai-form">
            <textarea id="question" placeholder="E.g., 'How do I use Ohm's Law?' or 'Explain KVL'..." rows="4" required></textarea>
@@ -52,48 +52,26 @@
        </div>
    </div>
 
+   <script src="AIHelp.js"></script>
    <script>
        document.getElementById('ai-form').addEventListener('submit', async function(e) {
            e.preventDefault();
-           const question = document.getElementById('question').value;
-           const responseDiv = document.getElementById('response');
-           const answerDiv = document.getElementById('answer');
-           const errorDiv = document.getElementById('error');
-           const errorMsg = document.getElementById('error-message');
-           const thinkingDiv = document.getElementById('thinking');
-           const submitBtn = document.querySelector('#ai-form button');
-          
-           responseDiv.style.display = 'none';
-           errorDiv.style.display = 'none';
-           thinkingDiv.style.display = 'block';
+           const question = document.getElementById('question').value.trim();
+           if (!question) return;
+
+           const submitBtn = this.querySelector('button');
+           const originalText = submitBtn.textContent;
            submitBtn.disabled = true;
            submitBtn.textContent = 'Thinking...';
-          
+
            try {
-               const res = await fetch('http://localhost:5000/ask', {
-                   method: 'POST',
-                   headers: {
-                       'Content-Type': 'application/json'
-                   },
-                   body: JSON.stringify({ question: question })
-               });
-              
-               const data = await res.json();
-              
-               if (res.ok) {
-                   answerDiv.innerHTML = data.answer.replace(/\n/g, '<br>');
-                   responseDiv.style.display = 'block';
-               } else {
-                   errorMsg.textContent = data.error || 'Something went wrong';
-                   errorDiv.style.display = 'block';
-               }
+               await askAI(question);
            } catch (err) {
-               errorMsg.textContent = "Can't reach the AI server right now. Double-check if it's running!";
-               errorDiv.style.display = 'block';
+               // Handled in askAI
            } finally {
-               thinkingDiv.style.display = 'none';
                submitBtn.disabled = false;
-               submitBtn.textContent = '🤖 Get Answer';
+               submitBtn.textContent = originalText;
+               document.getElementById('question').value = '';
            }
        });
    </script>
