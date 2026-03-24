@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Capacitance Course - Learn Electronics & Circuit Design</title>
+    <link rel="stylesheet" href="OhmsLawCourse.css">
+    <link rel="icon" href="./logo.png" type="text/x-icon">
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo"><img src="logo.png" alt="Circuit Logo"> Circuit</div>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="courses.html">Courses</a></li>
+                <li><a href="circuit-simulator.html">Circuit Simulator</a></li>
+                <li><a href="tutorials.html">Tutorials</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contacts.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header> 
+    
+    <section class="hero">
+        <h1>Capacitance Course</h1>
+        <p>Master the fundamental concepts of capacitance and capacitor behavior in electrical circuits.</p>
+    </section>
+
+    <div class="container">
+        
+        
+        <div class="explanation">
+            <h3>What is Capacitance?</h3>
+            <p>Capacitance is the ability of a capacitor to store electrical charge. A capacitor consists of two conductive plates separated by an insulating material called a dielectric. When a voltage is applied across the plates, positive charge accumulates on one plate and negative charge on the other.</p>
+            <div class="circuit-diagram">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0b/Charging_and_discharging_of_a_capacitor_in_an_RC_circuit.jpg/960px-Charging_and_discharging_of_a_capacitor_in_an_RC_circuit.jpg" 
+                     alt="Capacitor Charging Circuit Diagram" 
+                     style="max-width: 100%; height: auto; border: 1px solid #ddd; border-radius: 4px;">
+                <p class="diagram-caption">Figure 1: Complete capacitor charging circuit showing charge accumulation on plates</p>
+            </div>
+            <p>The capacitance of a capacitor depends on the area of the plates, the distance between them, and the dielectric constant of the material between them. Capacitors are fundamental components in electronics used for energy storage, filtering, timing, and signal processing.</p>
+            
+            <h3>The Mathematical Formula</h3>
+            <p>The basic formula for capacitance is:</p>
+            <p class="formula">C = Q/V</p>
+            <p>Where:</p>
+            <ul class="formula-list">
+                <li><strong>C</strong> is the capacitance (in farads, F)</li>
+                <li><strong>Q</strong> is the charge stored (in coulombs, C)</li>
+                <li><strong>V</strong> is the voltage across the capacitor (in volts, V)</li>
+            </ul>
+            
+            <h3>Capacitor Combinations</h3>
+            <p>When capacitors are connected in series:</p>
+            <p class="formula">1/C_eq = 1/C₁ + 1/C₂ + ... + 1/Cₙ</p>
+            <div class="circuit-diagram">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/a/af/Parallel_series_capacitors.png" 
+                     alt="Capacitors in Series Circuit Diagram" 
+                     style="max-width: 100%; height: auto; border: 1px solid #ddd; border-radius: 4px;">
+                <p class="diagram-caption">Figure 2: Capacitors connected in series - voltage divides, current is the same</p>
+            </div>
+            <p>When capacitors are connected in parallel:</p>
+            <p class="formula">C_eq = C₁ + C₂ + ... + Cₙ</p>
+            <div class="circuit-diagram">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/a/af/Parallel_series_capacitors.png" 
+                     alt="Capacitors in Parallel Circuit Diagram" 
+                     style="max-width: 100%; height: auto; border: 1px solid #ddd; border-radius: 4px;">
+                <p class="diagram-caption">Figure 3: Capacitors connected in parallel - voltage is the same, current divides</p>
+            </div>
+            
+            <h3>Energy Stored in a Capacitor</h3>
+            <p>The energy stored in a charged capacitor is:</p>
+            <p class="formula">E = (1/2)CV²</p>
+            <p>or equivalently:</p>
+            <p class="formula">E = (1/2)QV</p>
+            <p class="formula">E = Q²/(2C)</p>
+            <div class="circuit-diagram">
+                <img src="data:image/webp;base64,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" 
+                     alt="Capacitor Energy Storage Diagram" 
+                     style="max-width: 100%; height: auto; border: 1px solid #ddd; border-radius: 4px;">
+                <p class="diagram-caption">Figure 4: Energy storage in a capacitor - electrical energy is stored in the electric field between plates</p>
+            </div>
+            
+            <h3>Units of Measurement</h3>
+            <p>The standard units used with capacitors are:</p>
+            <ul class="units-list">
+                <li><strong>Capacitance:</strong> Farads (F) - the SI unit, though practical capacitors use μF, nF, pF</li>
+                <li><strong>Charge:</strong> Coulombs (C) - measures stored electrical charge</li>
+                <li><strong>Voltage:</strong> Volts (V) - measures electrical potential difference</li>
+                <li><strong>Energy:</strong> Joules (J) - measures stored electrical energy</li>
+            </ul>
+            
+            <h3>Practical Applications</h3>
+            <p>Capacitors have numerous applications in electronics:</p>
+            <ul>
+                <li><strong>Energy Storage:</strong> Storing electrical energy for later use</li>
+                <li><strong>Filtering:</strong> Removing noise and smoothing power supplies</li>
+                <li><strong>Timing:</strong> Creating time delays in RC circuits</li>
+                <li><strong>Coupling:</strong> Passing AC signals while blocking DC</li>
+                <li><strong>Tuning:</strong> Selecting specific frequencies in radio circuits</li>
+            </ul>
+            
+            <h4>Application 1: Power Supply Filtering</h4>
+            <div class="circuit-diagram">
+                <img src="https://instrumentationtools.com/wp-content/uploads/2016/07/instrumentationtools.com_capacitor-filter.png" 
+                     alt="Power Supply Filtering Circuit Diagram" 
+                     style="max-width: 100%; height: auto; border: 1px solid #ddd; border-radius: 4px;">
+                <p class="diagram-caption">Figure 5: Power supply filtering - capacitor smooths rectified AC into steady DC voltage</p>
+            </div>
+            
+            <h4>Application 2: RC Timing Circuit</h4>
+            <div class="circuit-diagram">
+                <img src="https://th.bing.com/th/id/OIP.umhFQ21CI8d7-PZ5igfk2wHaD_?w=319&h=180&c=7&r=0&o=7&pid=1.7&rm=3" 
+                     alt="RC Timing Circuit Diagram" 
+                     style="max-width: 100%; height: auto; border: 1px solid #ddd; border-radius: 4px;">
+                <p class="diagram-caption">Figure 6: RC timing circuit - capacitor charges through resistor creating time delay</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="next-section">
+        <a href="CapacitancePractice.html" class="btn next-btn">Next: Practice Problems</a>
+    </div>
+</body>
+</html></content>
+<parameter name="filePath">/workspaces/Random/CapacitanceCourseContent.html
