@@ -4,3 +4,10 @@ AIHelp.js
 .venv/
 backup/
 .vscode/
+node_modules/
+.env
+.vercel
+.next/
+dist/
+build/
+.DS_Store
