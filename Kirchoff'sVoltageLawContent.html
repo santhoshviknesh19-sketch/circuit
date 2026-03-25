@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kirchhoff's Voltage Law Course - Learn Electronics & Circuit Design</title>
+    <link rel="stylesheet" href="OhmsLawCourse.css">
+    <link rel="icon" href="./logo.png" type="text/x-icon">
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo"><img src="logo.png" alt="Circuit Logo"> Circuit</div>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="courses.html">Courses</a></li>
+                <li><a href="circuit-simulator.html">Circuit Simulator</a></li>
+                <li><a href="tutorials.html">Tutorials</a></li>
+                <li><a href="AIHelp.html">AI Help</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contacts.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header> 
+    
+    <section class="hero">
+        <h1>Kirchhoff's Voltage Law (KVL)</h1>
+        <p>Voltages around any loop add to zero – energy conservation in action!</p>
+    </section>
+
+    <div class="container">
+        <div class="explanation">
+            <h3>KVL Basics</h3>
+            <p>Go around a loop: rises and drops cancel out. Sum V = 0</p>
+            
+            <h3>Your Formula</h3>
+            <p>V1 + V2 + V3... = 0 (rise +, drop -)</p>
+            
+            <h3>Steps to Solve</h3>
+            <p>1. Find loops.</p>
+            <p>2. Assume currents.</p>
+            <p>3. Sum voltages = 0.</p>
+            <p>4. Crunch numbers.</p>
+
+            <h3>Example</h3>
+            <p>12V battery, 4Ω & 2Ω drops: 12 - 4I - 2I = 0 → I=2A!</p>
+            <div class="circuit-diagram">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0b/KVL_with_equation.svg/500px-KVL_with_equation.svg.png" 
+                     alt="Kirchhoff's Voltage Law Circuit Diagram" 
+                     style="max-width: 100%; height: auto; border: 1px solid #ddd; border-radius: 4px;">
+                <p class="diagram-caption">Figure 1: Loop voltages balance perfectly.</p>
+            </div>
+
+            <h3>Multi-Loop Awesomeness</h3>
+            <div class="circuit-diagram">
+                <img src="https://th.bing.com/th/id/OIP.tlxDrSPXMetZyszLAygOWAHaFj?w=292&h=180&c=7&r=0&o=7&pid=1.7&rm=3" 
+                     alt="Mesh Analysis Circuit Diagram" 
+                     style="max-width: 100%; height: auto; border: 1px solid #ddd; border-radius: 4px;">
+                <p class="diagram-caption">Figure 2: Multiple loops? No problem!</p>
+            </div>
+
+            <h3>Everyday Uses</h3>
+            <ul>
+                <li>Mesh analysis</li>
+                <li>Network design</li>
+                <li>Troubleshooting</li>
+                <li>Sim tools</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="next-section">
+        <a href="Kirchoff'sVoltageLawPractice.html" class="btn next-btn">Next: Practice Problems 🎯</a>
+    </div>
+</body>
+</html>

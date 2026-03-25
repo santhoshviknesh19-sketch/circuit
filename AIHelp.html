@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>AI Help - Your Friendly Circuit Assistant</title>
+   <link rel="stylesheet" href="circuit.css">
+   <link rel="stylesheet" href="AIHelp.css">
+   <link rel="icon" href="./logo.png" type="text/x-icon">
+</head>
+<body>
+   <header>
+       <nav>
+           <div class="logo"><img src="logo.png" alt="Circuit Logo"> Circuit</div>
+           <ul>
+               <li><a href="index.html">Home</a></li>
+               <li><a href="courses.html">Courses</a></li>       
+               <li><a href="circuit-simulator.html">Circuit Simulator</a></li>
+               <li><a href="tutorials.html">Tutorials</a></li>
+               <li><a href="AIHelp.html">AI Help</a></li>
+               <li><a href="about.html">About</a></li>
+               <li><a href="contacts.html">Contact</a></li>
+           </ul>
+       </nav>
+   </header>
+
+   <section class="hero">
+       <h1> AI Help</h1>
+       <p>Stuck on a circuit? Ask me anything about electronics, and I'll help out!</p>
+   </section>
+
+   <div class="container">
+       <h2>What's on your mind?</h2>
+       <p>Got a question about Ohm's Law, Kirchhoff's rules, or any circuit puzzle? Type it in below!</p>
+      
+       <form id="ai-form">
+           <textarea id="question" placeholder="E.g., 'How do I use Ohm's Law?' or 'Explain KVL'..." rows="4" required></textarea>
+           <button type="submit" class="btn">🤖 Get Answer</button>
+       </form>
+      
+       <div id="response" style="margin-top: 20px; display: none;">
+           <h3>Here's what I think:</h3>
+           <div id="answer"></div>
+       </div>
+      
+       <div id="thinking" style="margin-top: 20px; display: none;">
+           <p> Hmm, let me think about that...</p>
+       </div>
+      
+       <div id="error" style="margin-top: 20px; display: none; color: red;">
+           <p id="error-message"></p>
+       </div>
+   </div>
+
+   <script src="AIHelp.js"></script>
+   <script>
+       document.getElementById('ai-form').addEventListener('submit', async function(e) {
+           e.preventDefault();
+           const question = document.getElementById('question').value.trim();
+           if (!question) return;
+
+           const submitBtn = this.querySelector('button');
+           const originalText = submitBtn.textContent;
+           submitBtn.disabled = true;
+           submitBtn.textContent = 'Thinking...';
+
+           try {
+               await askAI(question);
+           } catch (err) {
+               // Handled in askAI
+           } finally {
+               submitBtn.disabled = false;
+               submitBtn.textContent = originalText;
+               document.getElementById('question').value = '';
+           }
+       });
+   </script>
+   <footer>
+       <p>&copy; 2026 Circuit. All rights reserved.</p>
+   </footer>
+</body>
+</html>

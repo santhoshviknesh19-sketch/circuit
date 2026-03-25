@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kirchhoff's Current Law Course - Learn Electronics & Circuit Design</title>
+    <link rel="stylesheet" href="OhmsLawCourse.css">
+    <link rel="icon" href="./logo.png" type="text/x-icon">
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo"><img src="logo.png" alt="Circuit Logo"> Circuit</div>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="courses.html">Courses</a></li>
+                <li><a href="circuit-simulator.html">Circuit Simulator</a></li>
+                <li><a href="tutorials.html">Tutorials</a></li>
+                <li><a href="AIHelp.html">AI Help</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contacts.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header> 
+    
+    <section class="hero">
+        <h1>Kirchhoff's Current Law (KCL)</h1>
+        <p>Charge can't disappear – what comes in must go out! Let's explore junctions.</p>
+    </section>
+
+    <div class="container">
+        <div class="explanation">
+            <h3>The Big Idea Behind KCL</h3>
+            <p>At any junction (node), total current in = total current out. It's conservation of charge – simple physics!</p>
+            <p>Math: Sum I_in = Sum I_out or All I = 0</p>
+            <div class="circuit-diagram">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f2/Kirchhoff's_Current_Law.svg/250px-Kirchhoff's_Current_Law.svg.png" 
+                     alt="Kirchhoff's Current Law Circuit Diagram" 
+                     style="max-width: 100%; height: auto; border: 1px solid #ddd; border-radius: 4px;">
+                <p class="diagram-caption">Figure 1: Currents meet at a node – in equals out!</p>
+            </div>
+
+            <h3>Formula Time</h3>
+            <p>I1 + I2 + I3 + ... = 0 (pick direction convention)</p>
+            <ul class="formula-list">
+                <li>In to node: positive; out: negative (or vice versa)</li>
+            </ul>
+
+            <h3>How to Use It</h3>
+            <p>1. Spot nodes.</p>
+            <p>2. Pick ground.</p>
+            <p>3. Write equations: currents leaving = 0.</p>
+            <p>4. Solve!</p>
+
+            <h3>Quick Example</h3>
+            <p>I1 = 2A in, I2 = -1A out, so I3 = -1A out. Balanced!</p>
+
+            <h3>Real-World Wins</h3>
+            <ul>
+                <li>Solving big circuits</li>
+                <li>Amplifier design</li>
+                <li>Power grids</li>
+                <li>Simulations</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="next-section">
+        <a href="Kirchoff'sCurrentLawPractice.html" class="btn next-btn">Next: Practice Problems 🎯</a>
+    </div>
+</body>
+</html>
