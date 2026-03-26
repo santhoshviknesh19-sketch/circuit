@@ -4,3 +4,4 @@ AIHelp.js
 .venv/
 backup/
 .vscode/
+.env
