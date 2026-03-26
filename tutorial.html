@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tutorials - Circuit Learning</title>
+    <link rel="stylesheet" href="circuit.css">
+    <link rel="icon" href="./logo.png" type="text/x-icon">
+    <style>
+        .video-container {
+            position: relative;
+            width: 100%;
+            max-width: 800px;
+            margin: 2rem auto;
+            background: #f8f9fa;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+        }
+        .video-container video {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        .video-placeholder {
+            height: 200px;
+            background: #e9ecef;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            color: #6c757d;
+            border: 2px dashed #adb5bd;
+            border-radius: 8px;
+        }
+        .tutorial-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+        .tutorial-card {
+            background: white;
+            border-radius: 12px;
+            padding: 2rem;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+        .tutorial-card h3 {
+            color: #ffd966;
+            margin-bottom: 1rem;
+        }
+        .container { max-width: 1100px; margin: 0 auto; padding: 0 1rem; }
+        .youtube-container {
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9 */
+            height: 0;
+            overflow: hidden;
+            border-radius: 8px;
+        }
+        .youtube-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo"><img src="logo.png" alt="Circuit Logo"> Circuit</div>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="courses.html">Courses</a></li>
+                <li><a href="circuit-simulator.html">Circuit Simulator</a></li>
+                <li><a href="tutorial.html">Tutorials</a></li>
+                <li><a href="AIHelp.html">AI Help</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contacts.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <h1>Video Tutorials</h1>
+        <p>Watch step-by-step video lessons for key electronics concepts. Replace the video src with your MP4 files.</p>
+    </section>
+
+    <div class="container">
+        <div class="tutorial-grid">
+            <div class="tutorial-card">
+                <h3>🔌 Ohm's Law</h3>
+                <div class="video-container">
+                    <!-- Replace ID with your YouTube Video ID (e.g. dQw4w9WgXcQ) -->
+                    <div class="youtube-container">
+                        <iframe src="https://www.youtube.com/embed/1V3IgB5yfIY?rel=0" title="Ohm's Law Tutorial" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tutorial-card">
+                <h3>🔄 Kirchoff's Current Law (KCL)</h3>
+                <div class="video-container">
+                    <!-- Replace ID with your YouTube Video ID -->
+                    <div class="youtube-container">
+                        <iframe src="https://www.youtube.com/embed/ZrXathzjaDY?rel=0" title="KCL Tutorial" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tutorial-card">
+                <h3>🔍 Finding Equivalent Resistance</h3>
+                <div class="video-container">
+                    <!-- Replace ID with your YouTube Video ID -->
+                    <div class="youtube-container">
+                        <iframe src="https://www.youtube.com/embed/CRCZM6TLcFQ?rel=0" title="Equivalent Resistance Tutorial" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tutorial-card">
+                <h3>🔀 Kirchoff's Voltage Law (KVL)</h3>
+                <div class="video-container">
+                    <!-- Replace ID with your YouTube Video ID -->
+                    <div class="youtube-container">
+                        <iframe src="https://www.youtube.com/embed/pTFT9SMrpk8?rel=0" title="KVL Tutorial" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tutorial-card">
+                <h3>🔋 Capacitors</h3>
+                <div class="video-container">
+                    <!-- Replace ID with your YouTube Video ID -->
+                    <div class="youtube-container">
+                        <iframe src="https://www.youtube.com/embed/6SFA9zX8sQ4?rel=0" title="Capacitors Tutorial" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <p style="text-align: center; color: #666; font-style: italic;">
+           THESE ARE TUTORIALS TO HELP YOU UNDERSTAND THE CONCEPTS
+        </p>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 Circuit. All rights reserved.</p>
+    </footer>
+</body>
+</html>
