@@ -38,8 +38,10 @@ nav {
 }
 
 .logo img {
-    height: 2rem;
+    height: 50px;
     width: auto;
+    vertical-align: middle;
+    margin-right: 10px;
 }
 
 nav ul {
