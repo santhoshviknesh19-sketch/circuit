@@ -133,7 +133,6 @@ function getEndpointPos(endpoint) {
 }
 
 function findWireAt(point) {
-  // Basic approximation: check distance to each segment
   for (const wire of state.wires) {
     const a = getEndpointPos(wire.from);
     const b = getEndpointPos(wire.to);
@@ -316,19 +315,17 @@ function drawComponents() {
       continue;
     }
 
-    // Draw component body
     let fillColor = settings.componentColor;
     let strokeColor = '#ffffff';
     
     if (comp.type === COMPONENT.LIGHTBULB) {
-      // Calculate brightness based on voltage 0..100V mapping (0 dark, 100 max bright)
       const volts = state.componentVoltage[comp.id] || 0;
       const brightness = Math.min(1, Math.max(0, volts / 100));
       const power = state.componentPower[comp.id] || 0;
 
-      const hue = 60; // Yellow
-      const saturation = 70 + brightness * 30; // Range 70-100
-      const lightness = 20 + brightness * 60; // Range 20-80 for strong contrast
+      const hue = 60;
+      const saturation = 70 + brightness * 30;
+      const lightness = 20 + brightness * 60;
       fillColor = `hsl(${hue}, ${saturation}%, ${lightness}%)`;
       strokeColor = brightness > 0.1 ? '#ff8800' : '#ffa000';
 
@@ -502,14 +499,12 @@ function onPointerDown(evt) {
     case TOOL.WIRE: {
       let endpoint = findTerminalAt(pos);
       if (!endpoint) {
-        // If the user clicked on a component, snap to its nearest terminal.
         if (clicked) {
           endpoint = getNearestTerminal(clicked, pos);
         }
       }
 
       if (!endpoint) {
-        // Create a node at the spot so we can wire there
         const node = addComponent(COMPONENT.NODE, snapToGrid(pos.x), snapToGrid(pos.y));
         endpoint = { compId: node.id, terminal: 0 };
       }
